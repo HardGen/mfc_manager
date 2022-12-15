@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from '@ant-design/icons';
+import { Layout, Menu, Avatar ,theme } from 'antd';
+import Nav from './components/Nav';
+import MainContent from './components/Content';
 
-function App() {
+const {  Sider } = Layout;
+
+const App: React.FC = () => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Sider trigger={null} collapsible>
+        <div className="logo" />
+      <Avatar size={100} icon={<UserOutlined />} alt="avatar"/>
+      <Nav></Nav>
+      </Sider>
+      <Layout className="site-layout">
+        <MainContent></MainContent>
+      </Layout>
+    </Layout>
   );
-}
+};
 
 export default App;
